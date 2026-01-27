@@ -3,6 +3,10 @@
   "name": "AI Music Detector",
   "version": "1.0",
   "permissions": ["storage"],
+  "web_accessible_resources": [{
+    "resources": ["ItsAI.png"],
+    "matches": ["https://music.youtube.com/*"]
+  }],
   "background": {
     "service_worker": "background.js"
   },
