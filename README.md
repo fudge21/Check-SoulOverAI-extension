@@ -1,2 +1,4 @@
 # Check [SoulOverAi](https://souloverai.com/list) automatically 
-Its basic
+Checks if the music you are listening to was made by AI 
+
+currently for youtube music might do more
