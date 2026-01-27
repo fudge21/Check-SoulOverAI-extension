@@ -1,0 +1,13 @@
+{
+  "manifest_version": 3,
+  "name": "AI Music Detector",
+  "version": "1.0",
+  "permissions": ["storage"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [{
+    "matches": ["https://music.youtube.com/*"],
+    "js": ["content.js"]
+  }]
+}
