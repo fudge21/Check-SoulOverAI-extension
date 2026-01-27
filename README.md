@@ -1,2 +1,2 @@
-# Check the (SoulOverAi)[https://souloverai.com/list] AI artist list automatically
+# Check [SoulOverAi](https://souloverai.com/list) automatically 
 Its basic
