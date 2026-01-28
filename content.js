@@ -69,7 +69,7 @@ const badge = document.createElement('img');
 badge.className = 'ai-warning-badge';
 badge.src = chrome.runtime.getURL('ArtistUsesAI.png')
 
-badge.style.width = '200px';
+badge.style.width = '175px';
 badge.style.height = '50px';
 badge.style.display = 'block';
 badge.style.margin = '0 auto';
