@@ -1,5 +1,7 @@
 # Check [SoulOverAi](https://souloverai.com/list) automatically 
-Checks if the music you are listening to was made by AI
 
-currently for youtube music might do more
-extremely bare bones right now!
+A bare-bones Chrome extension that watches YouTube Music and tells you whether the song you’re listening to was made by a human or a data center.
+
+It automatically checks the current track against the SoulOverAI's list
+
+Very basic right now much to be improved!

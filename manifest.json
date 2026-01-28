@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "AI Music Detector",
+  "name": "Check SoulOverAI",
   "version": "1.0",
   "permissions": ["storage"],
   "web_accessible_resources": [{
