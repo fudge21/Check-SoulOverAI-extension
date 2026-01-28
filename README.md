@@ -5,3 +5,6 @@ A bare-bones Chrome extension that watches YouTube Music and tells you whether t
 It automatically checks the current track against the SoulOverAI's list
 
 Very basic right now much to be improved!
+
+![Thats AI alright](Examples/ThatsNotReal.png)
+![That is a banger alright](Examples/ThatsAbanger.png)
