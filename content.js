@@ -53,7 +53,7 @@ setInterval(checkSong, 3000);
 
 function ShowWarningBadge() {
 
-const Placement = document.querySelector('#av-id');
+const Placement = document.querySelector('#left-controls > span');
 
 if (!Placement) {
     console.log("Screwed up");
@@ -67,12 +67,12 @@ if (alreadyThere) {
 
 const badge = document.createElement('img');
 badge.className = 'ai-warning-badge';
-badge.src = chrome.runtime.getURL('ItsAI.png')
+badge.src = chrome.runtime.getURL('ArtistUsesAI.png')
 
-badge.style.width = '250px';
-badge.style.height = '100px';
+badge.style.width = '200px';
+badge.style.height = '50px';
 badge.style.display = 'block';
-badge.style.margin = '0 auto 16px';
+badge.style.margin = '0 auto';
 badge.style.zIndex = '9999';
 
 

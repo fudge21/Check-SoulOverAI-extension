@@ -4,7 +4,7 @@
   "version": "1.0",
   "permissions": ["storage"],
   "web_accessible_resources": [{
-    "resources": ["ItsAI.png"],
+    "resources": ["ArtistUsesAI.png"],
     "matches": ["https://music.youtube.com/*"]
   }],
   "background": {
