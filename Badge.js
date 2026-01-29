@@ -1,5 +1,3 @@
-
-
 const style = document.createElement('style');
 style.textContent = `
   @keyframes glow-pulse {
@@ -22,13 +20,13 @@ function ShowWarningBadge(width, selector) {
   if (!Placement) {
     console.log("Screwed up");
     return;
-}
-const alreadyThere = document.querySelector('.ai-warning-container')
-if (alreadyThere) {
+  }
+  const alreadyThere = document.querySelector('.ai-warning-container')
+  if (alreadyThere) {
     console.log("Already told em");
     return;
-}
-RemoveBadges()
+  }
+  RemoveBadges()
 
   const container = document.createElement('div');
   container.className = 'ai-warning-container';
@@ -59,48 +57,88 @@ RemoveBadges()
 
   Placement.parentElement.insertBefore(container, Placement.nextSibling);
 
-console.log("Should be there");
-
-
+  console.log("Should be there");
 }
 
+function ShowHumanBadge(width, selector) {
 
+  const Placement = document.querySelector(selector);
 
+  if (!Placement) {
+    console.log("Screwed up");
+    return;
+  }
+  const alreadyThere = document.querySelector('.human-container')
+  if (alreadyThere) {
+    console.log("Already told em");
+    return;
+  }
+  RemoveBadges()
 
+  const container = document.createElement('div');
+  container.className = 'human-container';
+  container.style.position = 'relative';
+  container.style.display = 'inline-block';
+  container.style.margin = '0 auto';
 
+  const badge = document.createElement('img');
+  badge.className = 'human-badge';
+  badge.src = chrome.runtime.getURL('LooksHuman.png');
 
+  badge.style.width = width;
+  //badge.style.height = '50px';
+  badge.style.display = 'block';
+  badge.style.margin = '0 auto';
+  badge.style.zIndex = '9999';
+  badge.style.opacity = '.75';
 
-function RemoveWarningBadge() {
-    const badge = document.querySelector('.ai-warning-badge');
+  container.appendChild(badge);
+  container.addEventListener('mouseenter', () => {
+    showPopup(container, badge)
+  });
 
-    if (badge) {
-        badge.remove();
-        console.log("Badge removed");
-    }
+  container.addEventListener('mouseleave', () => {
+    hidePopup()
+  });
+
+  Placement.parentElement.insertBefore(container, Placement.nextSibling);
+
+  console.log("Should be there");
 }
 
-function showPopup(container, badge) {
+function RemoveBadges() {
+  const Aibadge = document.querySelector('.ai-warning-badge');
+  const Humanbadge = document.querySelector('.human-badge');
+  if (Aibadge) {
+    Aibadge.remove();
+    console.log("Badge removed");
+  }
 
+  if (Humanbadge) {
+    Humanbadge.remove();
+    console.log("Badge removed");
+  }
+}
 
-    const rect = badge.getBoundingClientRect();
+function showPopup(container, badge, human) {
+  const rect = badge.getBoundingClientRect();
 
+  const popup = document.createElement('div');
+  popup.className = "ai-popup";
+  popup.textContent = human ? "Looks human!" : "AI-generated";
 
-    const popup = document.createElement('div');
-    popup.className = "ai-popup";
-    popup.textContent = "important stuff here one day";
-
-    popup.style.position = 'absolute';
-    popup.style.left = '0px';
-    popup.style.right = '0px';
-    popup.style.background = '#ff611d';
-    popup.style.color = "white";
-    popup.style.padding = '20px';
-    popup.style.borderRadius = '8px';
-    popup.style.zIndex = '10000';
-
-
-    popup.style.bottom = '0px';
-     
+  // ONE line instead of 7+
+  popup.style.cssText = `
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #ff611d;
+        color: white;
+        padding: 20px;
+        border-radius: 8px;
+        z-index: 10000;
+    `;
 
   container.appendChild(popup);
   console.log('is it there?');
@@ -113,4 +151,3 @@ function hidePopup() {
     console.log("Popup hidden");
   }
 }
-
