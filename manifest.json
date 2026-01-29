@@ -4,8 +4,8 @@
   "version": "1.0",
   "permissions": ["storage"],
   "web_accessible_resources": [{
-    "resources": ["ArtistUsesAI.png"],
-    "matches": ["https://music.youtube.com/*"]
+    "resources": ["ArtistUsesAI.png","LooksHuman.png", "Hover.html"],
+    "matches": ["<all_urls>"]
   }],
   "background": {
     "service_worker": "background.js"

@@ -16,12 +16,11 @@ chrome.storage.local.get('aiArtist', (result) => {
         const isAI = artistNames.includes(artist.toLowerCase());
         
 
-        console.log("Is AI?", isAI)
-        
+        console.log("Is AI?", isAI)     
         if (isAI) {
              ShowWarningBadge('75px', '#left-controls > span');
         }else{
-           RemoveWarningBadge();
+            ShowHumanBadge('50px', '#left-controls > span');
            }
 
 
