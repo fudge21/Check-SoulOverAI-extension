@@ -6,5 +6,6 @@ It automatically checks the current track against the SoulOverAI's list
 
 Very basic right now much to be improved!
 
+Messy code made by hand!... beacuse having AI make it would go against the whole point wouldnt it?
 ![Thats AI alright](Examples/ThatsNotReal.png)
 ![That is a banger alright](Examples/ThatsAbanger.png)
