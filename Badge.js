@@ -16,13 +16,10 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-
-
 function ShowWarningBadge(width, selector) {
+  const Placement = document.querySelector(selector);
 
-const Placement = document.querySelector(selector);
-
-if (!Placement) {
+  if (!Placement) {
     console.log("Screwed up");
     return;
 }
@@ -39,83 +36,28 @@ RemoveBadges()
   container.style.display = 'inline-block';
   container.style.margin = '0 auto';
 
+  const badge = document.createElement('img');
+  badge.className = 'ai-warning-badge';
+  badge.src = chrome.runtime.getURL('ArtistUsesAI.png');
 
+  badge.style.width = width;
+  //badge.style.height = '50px';
+  badge.style.display = 'block';
+  badge.style.margin = '0 auto';
+  badge.style.zIndex = '9999';
+  badge.style.filter = 'sepia(1) hue-rotate(-50deg) saturate(5) brightness(1) drop-shadow(0 0 15px rgba(255, 0, 0, 0.8)) drop-shadow(0 0 30px rgba(255, 0, 0, 0.5))';
+  badge.style.animation = 'glow-pulse 2s ease-in-out infinite';
 
-
-const badge = document.createElement('img');
-badge.className = 'ai-warning-badge';
-badge.src = chrome.runtime.getURL('ArtistUsesAI.png');
-
-badge.style.width = width;
-//badge.style.height = '50px';
-badge.style.display = 'block';
-badge.style.margin = '0 auto';
-badge.style.zIndex = '9999';
-
-badge.style.filter = 'sepia(1) hue-rotate(-50deg) saturate(5) brightness(1) drop-shadow(0 0 15px rgba(255, 0, 0, 0.8)) drop-shadow(0 0 30px rgba(255, 0, 0, 0.5))';
-badge.style.animation = 'glow-pulse 2s ease-in-out infinite';
-
-container.appendChild(badge);
-container.addEventListener('mouseenter', () => {
+  container.appendChild(badge);
+  container.addEventListener('mouseenter', () => {
     showPopup(container, badge)
-});
+  });
 
-container.addEventListener('mouseleave', () => {
+  container.addEventListener('mouseleave', () => {
     hidePopup()
-});
+  });
 
-Placement.parentElement.insertBefore(container, Placement.nextSibling);
-
-console.log("Should be there");
-
-
-}
-
-function ShowHumanBadge(width, selector) {
-
-const Placement = document.querySelector(selector);
-
-if (!Placement) {
-    console.log("Screwed up");
-    return;
-}
-const alreadyThere = document.querySelector('.human-container')
-if (alreadyThere) {
-    console.log("Already told em");
-    return;
-}
-RemoveBadges()
-
-  const container = document.createElement('div');
-  container.className = 'human-container';
-  container.style.position = 'relative';
-  container.style.display = 'inline-block';
-  container.style.margin = '0 auto';
-
-
-
-
-const badge = document.createElement('img');
-badge.className = 'human-badge';
-badge.src = chrome.runtime.getURL('LooksHuman.png');
-
-badge.style.width = width;
-//badge.style.height = '50px';
-badge.style.display = 'block';
-badge.style.margin = '0 auto';
-badge.style.zIndex = '9999';
-badge.style.opacity = '.75';
-
-container.appendChild(badge);
-container.addEventListener('mouseenter', () => {
-    showPopup(container, badge)
-});
-
-container.addEventListener('mouseleave', () => {
-    hidePopup()
-});
-
-Placement.parentElement.insertBefore(container, Placement.nextSibling);
+  Placement.parentElement.insertBefore(container, Placement.nextSibling);
 
 console.log("Should be there");
 
@@ -126,22 +68,18 @@ console.log("Should be there");
 
 
 
-function RemoveBadges() {
-    const Aibadge = document.querySelector('.ai-warning-badge');
-    const Humanbadge = document.querySelector('.human-badge');
-    if (Aibadge) {
-        Aibadge.remove();
-        console.log("Badge removed");
-    }
-    
-    if (Humanbadge) {
-        Humanbadge.remove();
+
+
+function RemoveWarningBadge() {
+    const badge = document.querySelector('.ai-warning-badge');
+
+    if (badge) {
+        badge.remove();
         console.log("Badge removed");
     }
 }
 
-
-function showPopup(container, badge, human) {
+function showPopup(container, badge) {
 
 
     const rect = badge.getBoundingClientRect();
@@ -149,27 +87,24 @@ function showPopup(container, badge, human) {
 
     const popup = document.createElement('div');
     popup.className = "ai-popup";
-        popup.textContent = human ? "Looks human!" : "AI-generated";
+    popup.textContent = "important stuff here one day";
 
-    // ONE line instead of 7+
-    popup.style.cssText = `
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: #ff611d;
-        color: white;
-        padding: 20px;
-        border-radius: 8px;
-        z-index: 10000;
-    `;
+    popup.style.position = 'absolute';
+    popup.style.left = '0px';
+    popup.style.right = '0px';
+    popup.style.background = '#ff611d';
+    popup.style.color = "white";
+    popup.style.padding = '20px';
+    popup.style.borderRadius = '8px';
+    popup.style.zIndex = '10000';
 
-    container.appendChild(popup);
-    console.log('is it there?');
 
+    popup.style.bottom = '0px';
+     
+
+  container.appendChild(popup);
+  console.log('is it there?');
 }
-
-
 
 function hidePopup() {
   const popup = document.querySelector('.ai-popup');
