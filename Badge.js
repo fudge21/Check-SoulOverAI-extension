@@ -26,12 +26,12 @@ if (!Placement) {
     console.log("Screwed up");
     return;
 }
-const alreadyThere = document.querySelector('.ai-warning-badge')
+const alreadyThere = document.querySelector('.ai-warning-container')
 if (alreadyThere) {
     console.log("Already told em");
     return;
 }
-
+RemoveBadges()
 
   const container = document.createElement('div');
   container.className = 'ai-warning-container';
@@ -71,23 +71,77 @@ console.log("Should be there");
 
 }
 
+function ShowHumanBadge(width, selector) {
+
+const Placement = document.querySelector(selector);
+
+if (!Placement) {
+    console.log("Screwed up");
+    return;
+}
+const alreadyThere = document.querySelector('.human-container')
+if (alreadyThere) {
+    console.log("Already told em");
+    return;
+}
+RemoveBadges()
+
+  const container = document.createElement('div');
+  container.className = 'human-container';
+  container.style.position = 'relative';
+  container.style.display = 'inline-block';
+  container.style.margin = '0 auto';
+
+
+
+
+const badge = document.createElement('img');
+badge.className = 'human-badge';
+badge.src = chrome.runtime.getURL('LooksHuman.png');
+
+badge.style.width = width;
+//badge.style.height = '50px';
+badge.style.display = 'block';
+badge.style.margin = '0 auto';
+badge.style.zIndex = '9999';
+badge.style.opacity = '.75';
+
+container.appendChild(badge);
+container.addEventListener('mouseenter', () => {
+    showPopup(container, badge)
+});
+
+container.addEventListener('mouseleave', () => {
+    hidePopup()
+});
+
+Placement.parentElement.insertBefore(container, Placement.nextSibling);
+
+console.log("Should be there");
+
+
+}
 
 
 
 
 
-
-function RemoveWarningBadge() {
-    const badge = document.querySelector('.ai-warning-badge');
-
-    if (badge) {
-        badge.remove();
+function RemoveBadges() {
+    const Aibadge = document.querySelector('.ai-warning-badge');
+    const Humanbadge = document.querySelector('.human-badge');
+    if (Aibadge) {
+        Aibadge.remove();
+        console.log("Badge removed");
+    }
+    
+    if (Humanbadge) {
+        Humanbadge.remove();
         console.log("Badge removed");
     }
 }
 
 
-function showPopup(container, badge) {
+function showPopup(container, badge, human) {
 
 
     const rect = badge.getBoundingClientRect();
