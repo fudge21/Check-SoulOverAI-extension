@@ -32,7 +32,9 @@ chrome.storage.local.get('aiArtist', (result) => {
 
 
 
-// setInterval(checkSong, 3000);
+setInterval(checkSong, 3000);
+
 });
 
-ShowWarningBadge('75px', '#left-controls > span');
+// ShowWarningBadge('75px', '#left-controls > span');
+// ^^ for testing only
