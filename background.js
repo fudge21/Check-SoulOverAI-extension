@@ -26,5 +26,3 @@ fetch("https://raw.githubusercontent.com/xoundbyte/soul-over-ai/main/dist/artist
 
 
 
-
-
