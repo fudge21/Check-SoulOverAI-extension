@@ -149,20 +149,20 @@ function showPopup(container, badge, human) {
 
     const popup = document.createElement('div');
     popup.className = "ai-popup";
-    popup.textContent = "important stuff here one day";
+        popup.textContent = human ? "Looks human!" : "AI-generated";
 
-    popup.style.position = 'absolute';
-    popup.style.left = '0px';
-    popup.style.right = '0px';
-    popup.style.background = '#ff611d';
-    popup.style.color = "white";
-    popup.style.padding = '20px';
-    popup.style.borderRadius = '8px';
-    popup.style.zIndex = '10000';
-
-
-    popup.style.bottom = '0px';
-     
+    // ONE line instead of 7+
+    popup.style.cssText = `
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #ff611d;
+        color: white;
+        padding: 20px;
+        border-radius: 8px;
+        z-index: 10000;
+    `;
 
     container.appendChild(popup);
     console.log('is it there?');
